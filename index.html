@@ -13,11 +13,16 @@
   <nav>
     <div class="nav-inner">
       <a href="#home" class="logo">Abdalatif Zidan</a>
-      <ul>
+
+      <!-- hamburger button, this one only shows up on small screens -->
+      <button id="menu-btn" class="menu-btn" aria-label="Open menu">&#9776;</button>
+
+      <ul id="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#contact">Contact</a></li>
+        <li><button id="theme-btn" class="theme-btn" aria-label="Switch between dark and light mode">&#9790;</button></li>
       </ul>
     </div>
   </nav>
@@ -26,7 +31,7 @@
   <header id="home" class="hero">
     <div class="avatar">AZ</div>
     <h1>Hi, I'm Abdalatif</h1>
-    <p class="tagline">A student learning web development with HTML, CSS and Bootstrap</p>
+    <p class="tagline">A student learning web development with HTML, CSS and JavaScript</p>
     <a href="#projects" class="btn">View My Work</a>
   </header>
 
@@ -37,28 +42,42 @@
       <h2>About Me</h2>
       <p>
         Hi! My name is Abdalatif Zidan and I'm learning how to build websites.
-        I've been taking an HTML and CSS course where I built a bunch of small
-        projects to practice everything I learned, from basic HTML pages all the
-        way to using CSS effects and the Bootstrap framework.
+        I've been taking courses where I built a bunch of small projects to
+        practice everything I learned, starting with basic HTML pages and CSS
+        effects, then the Bootstrap framework, and now JavaScript.
       </p>
       <p>
         This portfolio brings all of that work together in one place. Each project
         below has a live demo you can click and a link to the code on GitHub.
-        Thanks for stopping by!
+        The page itself uses JavaScript too &mdash; try the filter buttons, the
+        dark mode switch in the menu, and the contact form. Thanks for stopping by!
       </p>
     </section>
 
     <!-- PROJECTS -->
     <section id="projects">
       <h2>My Projects</h2>
-      <div class="grid">
 
-        <div class="card">
+      <!-- these buttons don't do anything on their own,
+           the JavaScript in script.js makes them filter the cards -->
+      <div class="filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="html">HTML</button>
+        <button class="filter-btn" data-filter="css">CSS</button>
+        <button class="filter-btn" data-filter="javascript">JavaScript</button>
+        <button class="filter-btn" data-filter="bootstrap">Bootstrap</button>
+      </div>
+
+      <p class="filter-count" id="filter-count"></p>
+
+      <div class="grid" id="project-grid">
+
+        <div class="card" data-tags="html css javascript">
           <div class="card-top c1">📷</div>
           <div class="card-body">
             <h3>Photography One-Page Site</h3>
-            <p>My first one-page website, with a gallery, embedded videos, a contact form and a nav that jumps to each section.</p>
-            <div class="tags"><span>HTML</span><span>CSS</span></div>
+            <p>A one-page website with embedded videos, a contact form and a nav that jumps to each section. I came back to it later and added a JavaScript lightbox, so clicking a photo opens it big with next and previous arrows.</p>
+            <div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
             <div class="links">
               <a href="https://latifzidan-art.github.io/HTML-and-CSS-Projects/One-Page%20Website/one_page_website.html" target="_blank">Live Demo</a>
               <a href="https://github.com/latifzidan-art/HTML-and-CSS-Projects/tree/main/One-Page%20Website" target="_blank">Code</a>
@@ -66,7 +85,7 @@
           </div>
         </div>
 
-        <div class="card">
+        <div class="card" data-tags="html css">
           <div class="card-top c2">🐾</div>
           <div class="card-body">
             <h3>The Pet Shop Website</h3>
@@ -79,7 +98,7 @@
           </div>
         </div>
 
-        <div class="card">
+        <div class="card" data-tags="css">
           <div class="card-top c3">🎨</div>
           <div class="card-body">
             <h3>Creating CSS Effects</h3>
@@ -92,7 +111,7 @@
           </div>
         </div>
 
-        <div class="card">
+        <div class="card" data-tags="html css">
           <div class="card-top c4">🍳</div>
           <div class="card-body">
             <h3>Simple Recipes</h3>
@@ -105,7 +124,7 @@
           </div>
         </div>
 
-        <div class="card">
+        <div class="card" data-tags="css bootstrap">
           <div class="card-top c5">🎬</div>
           <div class="card-body">
             <h3>Academy Cinemas</h3>
@@ -118,7 +137,9 @@
           </div>
         </div>
 
-        <div class="card">
+        <!-- this one is tagged with everything so it stays on screen no matter
+             which filter button is picked -->
+        <div class="card" data-tags="html css javascript bootstrap">
           <div class="card-top c6">💻</div>
           <div class="card-body">
             <h3>All Course Projects</h3>
@@ -139,6 +160,8 @@
       <div class="skills">
         <span>HTML</span>
         <span>CSS</span>
+        <span>JavaScript</span>
+        <span>DOM Manipulation</span>
         <span>Bootstrap</span>
         <span>Responsive Design</span>
         <span>Git &amp; GitHub</span>
@@ -150,20 +173,36 @@
     <section id="contact">
       <h2>Contact Me</h2>
       <p>Want to get in touch? Send me a message below.</p>
-      <form>
-        <input type="text" placeholder="Your Name">
-        <input type="email" placeholder="Your Email">
-        <textarea rows="4" placeholder="Your Message"></textarea>
+
+      <!-- novalidate turns off the browser's own pop-ups so my
+           JavaScript can check the boxes and show the messages instead -->
+      <form id="contact-form" novalidate>
+        <input type="text" id="name" placeholder="Your Name" aria-label="Your name">
+        <p class="error" id="name-error"></p>
+
+        <input type="email" id="email" placeholder="Your Email" aria-label="Your email">
+        <p class="error" id="email-error"></p>
+
+        <textarea rows="4" id="message" placeholder="Your Message" aria-label="Your message"></textarea>
+        <p class="error" id="message-error"></p>
+
         <button type="submit" class="btn">Send</button>
       </form>
+
+      <p id="form-status"></p>
     </section>
 
   </main>
 
+  <!-- little round arrow, JavaScript shows it once you scroll down -->
+  <button id="top-btn" class="top-btn" aria-label="Back to top">&#8593;</button>
+
   <footer>
-    <p>&copy; 2026 Abdalatif Zidan. Built with HTML &amp; CSS.</p>
+    <p>&copy; <span id="year"></span> Abdalatif Zidan. Built with HTML, CSS &amp; JavaScript.</p>
     <p><a href="#home">Back to top</a></p>
   </footer>
+
+  <script src="script.js"></script>
 
 </body>
 </html>

@@ -48,6 +48,36 @@ nav ul a {
 nav ul a:hover {
   color: white;
 }
+/* JavaScript adds this class to whichever section you're looking at */
+nav ul a.current {
+  color: white;
+  border-bottom: 2px solid #a5b4fc;
+  padding-bottom: 2px;
+}
+
+/* hamburger button - hidden on big screens, see the media query below */
+.menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+}
+/* the little moon / sun button */
+.theme-btn {
+  background: none;
+  border: none;
+  color: #d1d5db;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+.theme-btn:hover {
+  color: white;
+}
 
 /* HERO */
 .hero {
@@ -110,6 +140,42 @@ h2 {
   max-width: 700px;
   margin: 0 auto 15px auto;
   text-align: center;
+}
+
+/* PROJECT FILTER BUTTONS */
+.filters {
+  text-align: center;
+  margin-bottom: 12px;
+}
+.filter-btn {
+  background-color: white;
+  border: 2px solid #4f46e5;
+  color: #4f46e5;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 7px 16px;
+  margin: 4px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+.filter-btn:hover {
+  background-color: #eef2ff;
+}
+.filter-btn.active {
+  background-color: #4f46e5;
+  color: white;
+}
+.filter-count {
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+  margin: 0 0 25px 0;
+}
+/* JavaScript puts this class on cards that don't match the filter */
+.card.hidden {
+  display: none;
 }
 
 /* PROJECT GRID */
@@ -209,6 +275,50 @@ form .btn {
   color: white;
   align-self: center;
 }
+/* the red warning text under a box */
+.error {
+  color: #dc2626;
+  font-size: 13px;
+  margin: -12px 0 10px 2px;
+  min-height: 15px;
+}
+/* the message under the whole form after you press Send */
+#form-status {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 18px;
+  min-height: 22px;
+}
+#form-status.status-ok {
+  color: #059669;
+}
+#form-status.status-bad {
+  color: #dc2626;
+}
+
+/* BACK TO TOP BUTTON */
+.top-btn {
+  display: none;
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 50%;
+  background-color: #4f46e5;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 20;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+}
+.top-btn.show {
+  display: block;
+}
+.top-btn:hover {
+  background-color: #4338ca;
+}
 
 /* FOOTER */
 footer {
@@ -219,4 +329,77 @@ footer {
 }
 footer a {
   color: #a5b4fc;
+}
+
+/* DARK MODE
+   JavaScript adds the "dark" class to the body and all of these kick in */
+body.dark {
+  background-color: #111827;
+  color: #e5e7eb;
+}
+body.dark .card {
+  background-color: #1f2937;
+}
+body.dark .card-body p {
+  color: #9ca3af;
+}
+body.dark .card-top {
+  filter: brightness(0.8);
+}
+body.dark .tags span {
+  background-color: #312e81;
+  color: #c7d2fe;
+}
+body.dark .links a {
+  color: #a5b4fc;
+}
+body.dark .filter-btn,
+body.dark .skills span {
+  background-color: #1f2937;
+  border-color: #a5b4fc;
+  color: #a5b4fc;
+}
+body.dark .filter-btn:hover {
+  background-color: #374151;
+}
+body.dark .filter-btn.active {
+  background-color: #4f46e5;
+  border-color: #4f46e5;
+  color: white;
+}
+body.dark .filter-count {
+  color: #9ca3af;
+}
+body.dark form input,
+body.dark form textarea {
+  background-color: #1f2937;
+  border-color: #374151;
+  color: #e5e7eb;
+}
+body.dark form .btn {
+  color: white;
+}
+
+/* SMALL SCREENS - the hamburger menu takes over */
+@media (max-width: 700px) {
+  .nav-inner {
+    flex-wrap: wrap;
+  }
+  .menu-btn {
+    display: block;
+  }
+  nav ul {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    gap: 14px;
+    padding: 15px 0 5px 0;
+  }
+  /* JavaScript toggles this class when the hamburger is clicked */
+  nav ul.open {
+    display: flex;
+  }
+  .hero h1 {
+    font-size: 32px;
+  }
 }
