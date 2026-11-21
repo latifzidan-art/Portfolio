@@ -31,7 +31,7 @@
   <header id="home" class="hero">
     <div class="avatar">AZ</div>
     <h1>Hi, I'm Abdalatif</h1>
-    <p class="tagline">A student learning web development with HTML, CSS and JavaScript</p>
+    <p class="tagline">A student learning software development with HTML, CSS, JavaScript and C#</p>
     <a href="#projects" class="btn">View My Work</a>
   </header>
 
@@ -41,16 +41,24 @@
     <section id="about">
       <h2>About Me</h2>
       <p>
-        Hi! My name is Abdalatif Zidan and I'm learning how to build websites.
+        Hi! My name is Abdalatif Zidan and I'm learning how to build software.
         I've been taking courses where I built a bunch of small projects to
         practice everything I learned, starting with basic HTML pages and CSS
-        effects, then the Bootstrap framework, and now JavaScript.
+        effects, then the Bootstrap framework, then JavaScript, and most
+        recently C# and the .NET Framework.
+      </p>
+      <p>
+        Moving into C# is where things really opened up for me. Up to that point
+        everything I built lived in the browser, and now I'm working with
+        classes and interfaces, and using Entity Framework to put data into a
+        real database instead of losing it the moment the page reloads.
       </p>
       <p>
         This portfolio brings all of that work together in one place. Each project
-        below has a live demo you can click and a link to the code on GitHub.
-        The page itself uses JavaScript too &mdash; try the filter buttons, the
-        dark mode switch in the menu, and the contact form. Thanks for stopping by!
+        below has a link to the code on GitHub, and the web ones have a live demo
+        you can click. The page itself uses JavaScript too &mdash; try the filter
+        buttons, the dark mode switch in the menu, and the contact form. Thanks
+        for stopping by!
       </p>
     </section>
 
@@ -65,6 +73,7 @@
         <button class="filter-btn" data-filter="html">HTML</button>
         <button class="filter-btn" data-filter="css">CSS</button>
         <button class="filter-btn" data-filter="javascript">JavaScript</button>
+        <button class="filter-btn" data-filter="csharp">C#</button>
         <button class="filter-btn" data-filter="bootstrap">Bootstrap</button>
       </div>
 
@@ -137,16 +146,42 @@
           </div>
         </div>
 
+        <div class="card" data-tags="csharp">
+          <div class="card-top c7">⚙️</div>
+          <div class="card-body">
+            <h3>C# Console Applications</h3>
+            <p>A set of console apps from my C# course: a shipping quote calculator, an interface with polymorphism, and a class that overloads the == and != operators to compare employees by Id instead of by memory address.</p>
+            <div class="tags"><span>C#</span><span>.NET</span><span>OOP</span></div>
+            <div class="links">
+              <a href="https://github.com/latifzidan-art/Basic-C-Sharp-Projects" target="_blank">Code</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-tags="csharp">
+          <div class="card-top c8">🗄️</div>
+          <div class="card-body">
+            <h3>Student Database (Code-First)</h3>
+            <p>A console app using Entity Framework 6. Instead of designing a database first, I wrote plain C# classes and let Entity Framework build the tables to match them, then added a record and read it back out.</p>
+            <div class="tags"><span>C#</span><span>Entity Framework</span><span>SQL</span></div>
+            <div class="links">
+              <a href="https://github.com/latifzidan-art/Basic-C-Sharp-Projects/tree/main/StudentCodeFirst" target="_blank">Code</a>
+            </div>
+          </div>
+        </div>
+
         <!-- this one is tagged with everything so it stays on screen no matter
              which filter button is picked -->
-        <div class="card" data-tags="html css javascript bootstrap">
+        <div class="card" data-tags="html css javascript csharp bootstrap">
           <div class="card-top c6">💻</div>
           <div class="card-body">
             <h3>All Course Projects</h3>
-            <p>Every project I built during the course lives in one GitHub repository. Check out the full collection here.</p>
+            <p>Every project I built during my courses lives in a GitHub repository, one per course. Check out the full collection here.</p>
             <div class="tags"><span>GitHub</span></div>
             <div class="links">
-              <a href="https://github.com/latifzidan-art/HTML-and-CSS-Projects" target="_blank">View Repo</a>
+              <a href="https://github.com/latifzidan-art/Basic-C-Sharp-Projects" target="_blank">C#</a>
+              <a href="https://github.com/latifzidan-art/JavaScript-Projects" target="_blank">JavaScript</a>
+              <a href="https://github.com/latifzidan-art/HTML-and-CSS-Projects" target="_blank">HTML &amp; CSS</a>
             </div>
           </div>
         </div>
@@ -162,6 +197,13 @@
         <span>CSS</span>
         <span>JavaScript</span>
         <span>DOM Manipulation</span>
+        <span>C#</span>
+        <span>.NET Framework</span>
+        <span>Object Oriented Programming</span>
+        <span>Entity Framework</span>
+        <span>ASP.NET MVC</span>
+        <span>SQL</span>
+        <span>Debugging</span>
         <span>Bootstrap</span>
         <span>Responsive Design</span>
         <span>Git &amp; GitHub</span>
